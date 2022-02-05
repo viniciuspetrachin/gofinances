@@ -6,7 +6,7 @@ import { Container, Icon, Title } from './styles'
 interface TransactionTypeButtonProps extends TouchableOpacityProps {
 	title: string
 	type: 'up' | 'down'
-   isActive: boolean
+	isActive: boolean
 }
 
 const icons = {
@@ -17,7 +17,7 @@ const icons = {
 const TransactionTypeButton: React.FC<TransactionTypeButtonProps> = ({
 	title,
 	type,
-   isActive,
+	isActive,
 	...rest
 }) => {
 	return (
