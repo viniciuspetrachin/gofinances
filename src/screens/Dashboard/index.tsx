@@ -1,7 +1,9 @@
 import React from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import HightlightCard from '../../components/HightlightCard'
-import TransactionCard from '../../components/TransactionCard'
+import TransactionCard, {
+	IDataProps,
+} from '../../components/TransactionCard'
 
 import {
 	Container,
@@ -19,34 +21,32 @@ import {
 	TransactionList,
 } from './styles'
 
+export interface IDataListProps extends IDataProps {
+	id: string
+}
+
 const Dashboard: React.FC = () => {
-	const data = [
+	const data: IDataListProps[] = [
 		{
+			id: '1',
+			type: 'negative',
 			title: 'Desenvolvimento de sites',
 			amount: 'R$ 17.959,11',
-			category: { icon: 'home', name: 'Vendas' },
+			category: { icon: 'dollar-sign', name: 'Vendas' },
 			date: '15/08/15',
 		},
-      {
+		{
+			id: '2',
+			type: 'positive',
 			title: 'Desenvolvimento de App',
 			amount: 'R$ 53.959,11',
-			category: { icon: 'home', name: 'Vendas' },
+			category: { icon: 'dollar-sign', name: 'Vendas' },
 			date: '15/08/15',
 		},
-      {
+		{
+			id: '3',
+			type: 'negative',
 			title: 'Desenvolvimento de App2',
-			amount: 'R$ 53.959,11',
-			category: { icon: 'home', name: 'Vendas' },
-			date: '15/08/15',
-		},
-      {
-			title: 'Desenvolvimento de App3',
-			amount: 'R$ 53.959,11',
-			category: { icon: 'home', name: 'Vendas' },
-			date: '15/08/15',
-		},
-      {
-			title: 'Desenvolvimento de App4',
 			amount: 'R$ 53.959,11',
 			category: { icon: 'home', name: 'Vendas' },
 			date: '15/08/15',
@@ -97,6 +97,7 @@ const Dashboard: React.FC = () => {
 				<Title>Listagem</Title>
 				<TransactionList
 					data={data}
+					keyExtractor={(item) => item.id}
 					renderItem={({ item }) => <TransactionCard data={item} />}
 				/>
 			</Transactions>

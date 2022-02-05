@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons'
-import { Platform, StatusBar } from 'react-native';
+import { FlatListProps, Platform, StatusBar } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { FlatList } from 'react-native'
+import { IDataListProps } from './';
 
 export const Container = styled.View`
    flex: 1;
@@ -14,7 +16,7 @@ export const UserWrapper = styled.View`
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
-   margin-top: ${Platform.OS === 'android' ? RFValue(16) + StatusBar.currentHeight : RFValue(16)}px;
+   margin-top: ${Platform.OS === 'android' ? StatusBar.currentHeight : RFValue(16)}px;
 `
 
 export const Header = styled.View`
@@ -75,9 +77,7 @@ export const Transactions = styled.View`
    flex: 1;
    padding: 0px ${RFValue(24)}px;
 `
-export const TransactionList = styled.FlatList.attrs({
+export const TransactionList = styled(  FlatList as new (props: FlatListProps<IDataListProps>) => FlatList<IDataListProps>).attrs({
    showsVerticalScrollIndicator: false,
    contentContainerStyle: { paddingBottom: getBottomSpace() }
-})`
-   
-`
+})``
