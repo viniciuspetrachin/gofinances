@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
 import HightlightCard from '../../components/HightlightCard'
+import TransactionCard from '../../components/TransactionCard'
 
 import {
 	Container,
@@ -14,9 +15,44 @@ import {
 	UserName,
 	UserWrapper,
 	HighlightCards,
+	Transactions,
+	TransactionList,
 } from './styles'
 
 const Dashboard: React.FC = () => {
+	const data = [
+		{
+			title: 'Desenvolvimento de sites',
+			amount: 'R$ 17.959,11',
+			category: { icon: 'home', name: 'Vendas' },
+			date: '15/08/15',
+		},
+      {
+			title: 'Desenvolvimento de App',
+			amount: 'R$ 53.959,11',
+			category: { icon: 'home', name: 'Vendas' },
+			date: '15/08/15',
+		},
+      {
+			title: 'Desenvolvimento de App2',
+			amount: 'R$ 53.959,11',
+			category: { icon: 'home', name: 'Vendas' },
+			date: '15/08/15',
+		},
+      {
+			title: 'Desenvolvimento de App3',
+			amount: 'R$ 53.959,11',
+			category: { icon: 'home', name: 'Vendas' },
+			date: '15/08/15',
+		},
+      {
+			title: 'Desenvolvimento de App4',
+			amount: 'R$ 53.959,11',
+			category: { icon: 'home', name: 'Vendas' },
+			date: '15/08/15',
+		},
+	]
+
 	return (
 		<Container>
 			<Header>
@@ -57,6 +93,13 @@ const Dashboard: React.FC = () => {
 					lastTransaction='01 a 16 de abril'
 				/>
 			</HighlightCards>
+			<Transactions>
+				<Title>Listagem</Title>
+				<TransactionList
+					data={data}
+					renderItem={({ item }) => <TransactionCard data={item} />}
+				/>
+			</Transactions>
 		</Container>
 	)
 }
