@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons'
-import { FlatListProps, Platform, StatusBar } from 'react-native';
+import { FlatListProps } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { FlatList } from 'react-native'
 import { IDataListProps } from './';
@@ -16,7 +16,7 @@ export const UserWrapper = styled.View`
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
-   margin-top: ${Platform.OS === 'android' ? StatusBar.currentHeight : RFValue(16)}px;
+   margin-top: ${RFValue(16)}px;
 `
 
 export const Header = styled.View`

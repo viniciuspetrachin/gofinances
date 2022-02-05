@@ -54,7 +54,7 @@ const CategorySelect: React.FC<SelectCategoryProps> = ({
 			/>
 
 			<Footer>
-				<Button title='Selecionar' />
+				<Button title='Selecionar' onPress={closeCategorySelect} />
 			</Footer>
 		</Container>
 	)

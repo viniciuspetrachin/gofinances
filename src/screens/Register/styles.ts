@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Platform } from 'react-native';
 
 export const Container = styled.View`
    flex: 1;
