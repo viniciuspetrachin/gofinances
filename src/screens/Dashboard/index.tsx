@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import HightlightCard from '../../components/HightlightCard'
+
 import TransactionCard, {
 	IDataProps,
 } from '../../components/TransactionCard'
