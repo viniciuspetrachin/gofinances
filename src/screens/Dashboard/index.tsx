@@ -1,7 +1,6 @@
 import React from 'react'
 import { SafeAreaView, Text, View } from 'react-native'
-
-
+import HightlightCard from '../../components/HightlightCard'
 
 import {
 	Container,
@@ -14,6 +13,7 @@ import {
 	UserInfo,
 	UserName,
 	UserWrapper,
+	HighlightCards,
 } from './styles'
 
 const Dashboard: React.FC = () => {
@@ -33,10 +33,15 @@ const Dashboard: React.FC = () => {
 								<UserName>Vinícius</UserName>
 							</User>
 						</UserInfo>
-						<Icon name='power'/>
+						<Icon name='power' />
 					</UserWrapper>
 				</SafeAreaView>
 			</Header>
+			<HighlightCards>
+				<HightlightCard />
+				<HightlightCard />
+				<HightlightCard />
+			</HighlightCards>
 		</Container>
 	)
 }

@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons'
+import { Platform, StatusBar } from 'react-native';
 
 export const Container = styled.View`
    flex: 1;
@@ -12,6 +13,7 @@ export const UserWrapper = styled.View`
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+   margin-top: ${Platform.OS === 'android' ? RFValue(16) + StatusBar.currentHeight : RFValue(16)}px;
 `
 
 export const Header = styled.View`
@@ -53,6 +55,15 @@ export const UserName = styled.Text`
 `
 
 export const Icon = styled(Feather)`
-   color: ${({theme}) => theme.colors.secondary};
+   color: ${({ theme }) => theme.colors.secondary};
    font-size: ${RFValue(24)}px;
+`
+export const HighlightCards = styled.ScrollView.attrs({
+   horizontal: true,
+   showsHorizontalScrollIndicator: false,
+   contentContainerStyle: { paddingLeft: 24 }
+})`
+width: 100%;
+position: absolute;
+margin-top: ${RFPercentage(20)}px;
 `
