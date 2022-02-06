@@ -22,12 +22,9 @@ interface CategoryProps {
 	icon: string
 	color: string
 }
-interface ItemProps {
-	item: CategoryProps
-}
 
 interface SelectCategoryProps {
-	category: string
+	category: CategoryProps
 	setCategory: (category: CategoryProps) => void
 	closeCategorySelect: () => void
 }
@@ -45,7 +42,9 @@ const CategorySelect: React.FC<SelectCategoryProps> = ({
 			<ListCategories
 				data={categories}
 				renderItem={({ item }: any) => (
-					<Category>
+					<Category
+						onPress={() => setCategory(item)}
+						isActive={category.key === item.key}>
 						<Icon name={item.icon} />
 						<Name>{item.name}</Name>
 					</Category>

@@ -19,10 +19,12 @@ import CategorySelect from '../CategorySelect'
 import { Modal } from 'react-native'
 
 const Register: React.FC = () => {
-   const [category, setCategory] = useState({
-      key: 'category',
-      name: 'Categoria'
-   })
+	const [category, setCategory] = useState({
+		key: 'category',
+		name: 'Categoria',
+      icon: '',
+      color: ''
+	})
 	const [transactionType, setTransactionType] = useState('')
 	const [showCategoryModal, setShowCategoryModal] = useState(false)
 
@@ -52,13 +54,16 @@ const Register: React.FC = () => {
 							isActive={transactionType === 'down'}
 						/>
 					</TransactionsType>
-					<CategorySelectButton title='Categoria' onPress={() => setShowCategoryModal(true)}/>
+					<CategorySelectButton
+						title={category.name}
+						onPress={() => setShowCategoryModal(true)}
+					/>
 				</Fields>
 				<Button title='Enviar' />
 			</Form>
 			<Modal visible={showCategoryModal}>
 				<CategorySelect
-					category='test'
+					category={category}
 					setCategory={setCategory}
 					closeCategorySelect={() => setShowCategoryModal(false)}
 				/>
