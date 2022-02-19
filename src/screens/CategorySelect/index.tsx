@@ -1,62 +1,71 @@
-import React from 'react'
-import { Text, View, SafeAreaView } from 'react-native'
-import Button from '../../components/Form/Button'
-import TransactionTypeButton from '../../components/Form/TransactionTypeButton'
-import { categories } from '../../utils/categories'
-
-import { Header, Title } from '../Register/styles'
+import React from 'react';
+import { FlatList } from 'react-native';
+import { Button } from '../../components/Forms/Button';
+import { categories } from '../../utils/categories';
 
 import {
-	Category,
-	Container,
-	Footer,
-	Icon,
-	ListCategories,
-	Name,
-	Separator,
-} from './styles'
+  Container,
+  Header,
+  Title,
+  Category,
+  Icon,
+  Name,
+  Separator,
+  Footer
+} from './styles';
 
-interface CategoryProps {
-	key: string
-	name: string
-	icon: string
-	color: string
+interface Category {
+  key: string;
+  name: string;
 }
 
-interface SelectCategoryProps {
-	category: CategoryProps
-	setCategory: (category: CategoryProps) => void
-	closeCategorySelect: () => void
+interface Props {
+  category: Category;
+  setCategory: (category: Category) => void;
+  closeSelectCategory: () => void;
 }
 
-const CategorySelect: React.FC<SelectCategoryProps> = ({
-	category,
-	setCategory,
-	closeCategorySelect,
-}) => {
-	return (
-		<Container>
-			<Header>
-				<Title>Categorias</Title>
-			</Header>
-			<ListCategories
-				data={categories}
-				renderItem={({ item }: any) => (
-					<Category
-						onPress={() => setCategory(item)}
-						isActive={category.key === item.key}>
-						<Icon name={item.icon} />
-						<Name>{item.name}</Name>
-					</Category>
-				)}
-				ItemSeparatorComponent={() => <Separator />}
-			/>
+export function CategorySelect({
+  category,
+  setCategory,
+  closeSelectCategory
+}: Props) {
 
-			<Footer>
-				<Button title='Selecionar' onPress={closeCategorySelect} />
-			</Footer>
-		</Container>
-	)
+  function handleCategorySelect(category:Category) {
+    setCategory(category);
+  }
+
+  return (
+    <Container>
+      <Header>
+        <Title>Categoria</Title>
+      </Header>
+
+      <FlatList 
+        data={categories}
+        style={{flex: 1, width: '100%'}}
+        keyExtractor={item => item.key}
+        renderItem={({item}) => (
+          <>
+            <Category
+              onPress={() => handleCategorySelect(item)}
+              isActive={category.key === item.key}
+            >
+              <Icon name={item.icon} />
+              <Name>{item.name}</Name>
+            </Category>
+            <Separator/>
+          </>
+          
+        )}
+      />
+
+      <Footer>
+        <Button 
+          title="Selecionar"
+          onPress={closeSelectCategory}
+        />
+      </Footer>
+    </Container>
+  );
 }
-
-export default CategorySelect
